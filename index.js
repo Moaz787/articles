@@ -20,7 +20,10 @@ app.get("/", (req, res) => {
 
 const startServer = async () => {
   try {
-    await mongoose.connect(process.env.DB_URL);
+    await mongoose.connect(process.env.DB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log("Connected to MongoDB");
     app.listen(process.env.PORT, () => {
       console.log(`http://localhsot:${process.env.PORT}`);
