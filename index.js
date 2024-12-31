@@ -7,7 +7,7 @@ const compress = require("compression");
 const bodyParser = require("body-parser");
 const router = require("./routes/article.routes");
 const app = express();
-bodyParser.urlencoded({ extended: false });
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors());
 app.use(cors({ origin: "*" }));
