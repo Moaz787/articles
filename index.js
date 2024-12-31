@@ -4,15 +4,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const compress = require("compression");
+const bodyParser = require("body-parser");
 const router = require("./routes/article.routes");
 const app = express();
-
+bodyParser.urlencoded({ extended: false });
 
 app.use(cors());
 app.use(cors({ origin: "*" }));
 app.use(compress());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use("/api/v1", router);
 
