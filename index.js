@@ -7,11 +7,13 @@ const compress = require("compression");
 const router = require("./routes/article.routes");
 const app = express();
 
+
 app.use(cors());
 app.use(cors({ origin: "*" }));
 app.use(compress());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static('public'));
 app.use("/api/v1", router);
 
 app.get("/", (req, res) => {
@@ -31,3 +33,5 @@ const startServer = async () => {
 };
 
 startServer();
+
+module.exports = app;
